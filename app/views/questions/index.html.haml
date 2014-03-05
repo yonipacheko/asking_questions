@@ -1,0 +1,18 @@
+
+%h3 Ask a question?
+- if logged_in?
+  = render 'addons/question_form'
+- else
+  %h3
+    %small.alert U need to login to start asking or answering things (questions) ^:^)
+
+.hero-unit
+  %h2
+    Unsolved Questions:
+  - if @questions.any?
+    %fieldset.action
+      = render 'questions/question', obj: @questions
+  - else
+    %p No questions have been asked
+
+

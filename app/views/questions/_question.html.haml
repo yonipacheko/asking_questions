@@ -1,0 +1,6 @@
+%ul
+- obj.each do |i|
+    %li
+    = truncate(i.body, lenght: 35)
+    by
+    = i.user.username.capitalize

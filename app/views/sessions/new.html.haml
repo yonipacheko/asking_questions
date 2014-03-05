@@ -1,0 +1,11 @@
+%h5 Log in
+= form_tag '/login' do
+
+  %textfield
+  = label_tag :username
+  = text_field_tag :username
+  = label_tag :username
+  = text_field_tag :password
+
+  %textfield.action
+  = submit_tag 'Sign in', class: 'btn btn-primary'

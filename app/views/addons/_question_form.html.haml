@@ -1,0 +1,9 @@
+
+=  bootstrap_form_for @question, { class: 'form_horizontal'} do |f|
+  = render 'addons/error_module', obj: @question
+  %header
+  %fieldset
+    = f.text_field :body, label: 'Write the question'
+  %fieldset.actions.control-group
+    .controls
+      %input(type="submit" value="Enter" class="btn")

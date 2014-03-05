@@ -1,0 +1,12 @@
+%h1 Register
+= render 'addons/error_module', obj: @user
+%fieldset
+= form_for @user do |f|
+  = f.label :username
+  = f.text_field :username
+  = f.label :password
+  = f.text_field :password
+
+  %fieldset
+  = f.submit 'Register', class: 'btn, btn-primary'
+

@@ -1,0 +1,13 @@
+%ul.nav
+  %li
+    = link_to "post questions", root_path, :class => 'btn'
+  %li
+    - if logged_in?
+      = link_to "Log out ", logout_path
+
+
+    - else
+      = link_to 'Log in', login_path
+      = link_to 'Register', new_users_path
+  - if logged_in?
+    %label.badge.badge-success #{current_user.username}

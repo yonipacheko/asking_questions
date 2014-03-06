@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   def index
-    @questions = Question.all
+    @questions = Question.unsolved_questions(params)
     @question = Question.new
 
   end
@@ -23,6 +23,27 @@ class QuestionsController < ApplicationController
       #render :index
     end
 
+  end
+
+  def show
+    #binding.pry
+    @question = Question.find(params[:id])
+  end
+
+  def edit
+    @question = current_user.questions.where(params[:id]).first
+  end
+  def update
+    @question = current_user.questions.where(params[:id]).first
+    if @question.update_attributes(resolving_params)
+      flash[:success] = "you question has  been updated"
+      redirect_to @question
+    else
+      render 'edit'
+    end
+  end
+  def your_questions
+    @questions = current_user.questions.all
   end
 
 

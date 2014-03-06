@@ -9,4 +9,5 @@ PostitTemplate::Application.routes.draw do
   resource :users, only: [:new, :create]
 
   resources :questions
+  get '/your_question', to: 'questions#your_questions'
 end

@@ -4,6 +4,8 @@
   %li
     - if logged_in?
       = link_to "Log out ", logout_path
+      = link_to "Your posted questions", your_question_path
+
 
 
     - else

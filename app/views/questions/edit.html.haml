@@ -1,0 +1,12 @@
+%h1 Edit your question
+= render 'addons/error_module', obj: @question
+%fieldset
+= form_for @question do |f|
+  = f.label :body
+  = f.text_field :body
+  = f.label :solved
+  = f.check_box :solved
+
+  %fieldset
+  = f.submit 'Update', class: 'btn, btn-primary'
+

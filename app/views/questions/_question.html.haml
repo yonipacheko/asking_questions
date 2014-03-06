@@ -1,6 +1,9 @@
 %ul
-- obj.each do |i|
+- obj.each do |question|
     %li
-    = truncate(i.body, lenght: 35)
-    by
-    = i.user.username.capitalize
+        = link_to truncate( question.body, length: 35 ), question
+        by
+        = question.user.username
+        - if are_u_on_yr_questions_page?
+            = link_to 'Edit', edit_question_path(question), class: "label label-info"
+

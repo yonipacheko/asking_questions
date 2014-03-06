@@ -1,0 +1,5 @@
+.hero-unit
+  - if @questions.any?
+    = render 'questions/question', obj: @questions
+  - else
+    %p You've not posted any questions yet.!

@@ -5,5 +5,9 @@
         by
         = question.user.username
         - if are_u_on_yr_questions_page?
+            - if question.solved
+                ( solved )
+                %i.icon-ok
+                -#= display_solved(question)
             = link_to 'Edit', edit_question_path(question), class: "label label-info"
 

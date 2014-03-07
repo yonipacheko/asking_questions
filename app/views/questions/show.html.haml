@@ -4,3 +4,16 @@
     is asking:
 
   %p= @question.body
+
+  %h3
+    Answers
+  - if @question.answers.any?
+    = render 'answers/answer', obj: @answer
+
+  .muted
+    %h3
+      Answer this Question
+    - if logged_in?
+      = render 'answers/answer_form'
+    - else
+      %p U've to log in, unfortunately

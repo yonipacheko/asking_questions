@@ -4,4 +4,9 @@ module QuestionsHelper
     action_name == 'your_questions'
   end
 
+
+  def display_solved(question)
+    (question.solved) ? '- (Solved) ' : ' '
+  end
+
 end

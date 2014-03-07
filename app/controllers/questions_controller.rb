@@ -1,6 +1,8 @@
 class QuestionsController < ApplicationController
   def index
-    @questions = Question.unsolved_questions(params)
+    #@questions = Question.unsolved_questions(params)
+    @questions = Question.unsolved_questionss
+    #@users = User.find(:all, :conditions => {:show => true})
     @question = Question.new
 
   end
@@ -27,6 +29,7 @@ class QuestionsController < ApplicationController
 
   def show
     #binding.pry
+    @answer = Answer.new
     @question = Question.find(params[:id])
   end
 

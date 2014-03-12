@@ -8,9 +8,9 @@
   %h3
     Answers
   - if @question.answers.any?
-    = render 'answers/answer', obj: @answer
+    = render 'answers/answer'
 
-  .muted
+  .well.well-small
     %h3
       Answer this Question
     - if logged_in?

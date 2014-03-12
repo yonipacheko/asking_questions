@@ -1,5 +1,11 @@
 %ul
-  %li
-    = obj.body
-    by
-    = obj.user.username
+  - @question.answers.each do |answer_obj|
+    %li
+      = link_to '+', vote_question_answer_path( @question, answer_obj, vote: true ), method: 'post'
+      %span.badge.badge-info{id: "post_#{@question.id}_answer_#{answer_obj}"}=answer_obj.total_votes
+      = link_to '-', vote_question_answer_path( @question, answer_obj, vote: false ), method: 'post'
+
+
+      =answer_obj.body
+      by
+      = answer_obj.user.username

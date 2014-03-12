@@ -28,18 +28,19 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    #binding.pry
+   # binding.pry
     @answer = Answer.new
     @question = Question.find(params[:id])
   end
 
   def edit
-    @question = current_user.questions.where(params[:id]).first
+    #binding.pry
+    @question = current_user.questions.where(id:params[:id]).first
   end
   def update
     @question = current_user.questions.where(params[:id]).first
     if @question.update_attributes(resolving_params)
-      flash[:success] = "you question has  been updated"
+      flash[:success] = "you question has been updated"
       redirect_to @question
     else
       render 'edit'

@@ -9,7 +9,11 @@ PostitTemplate::Application.routes.draw do
   resource :users, only: [:new, :create]
 
   resources :questions do
-    resources :answers
+    resources :answers do
+      member do
+        post 'vote'  #questions/:question_id/answers/:id/vote(.:format)
+      end
+    end
   end
   get '/your_question', to: 'questions#your_questions'
 end

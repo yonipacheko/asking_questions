@@ -18,15 +18,12 @@ class AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     answer = Answer.where(id: params[:id]).first
     Vote.create(voteable: answer, user: current_user, vote: params[:vote] )
-    flash[:notice] = 'Your vote was counted'
-    redirect_to question_path(@question)
-
-    #if answer.votes.find_by(user: current_user)
-    #  flash[:alert] = 'A user can vote 1 time!'
-    #else
-    #  flash[:notice] = 'Your vote was counted'
-    #  redirect_to question_path(@question)
-    #end
+    if answer.votes.find_by(user: current_user)
+      flash[:alert] = 'A user can vote 1 time!'
+    else
+      flash[:notice] = 'Your vote was counted'
+      redirect_to question_path(@question)
+    end
   end
 
 

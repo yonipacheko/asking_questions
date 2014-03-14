@@ -28,7 +28,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-   # binding.pry
+
     @answer = Answer.new
     @question = Question.find(params[:id])
   end

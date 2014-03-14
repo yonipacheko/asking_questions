@@ -3,5 +3,19 @@ class Vote < ActiveRecord::Base
   belongs_to :voteable, polymorphic: true
 
 
-  #validates :user, uniqueness: {scope: :user_id, message: "User can only vote on this answer one time" }
+  validate :only_one_vote
+
+
+  def only_one_vote
+    count = Vote.where("user_id = ? AND voteable_id = ? AND voteable_type = ?", self.user_id, self.voteable_id, self.voteable_type).count
+    #binding.pry
+    if count == 0
+      true
+    else
+      self.errors.add(:base, "Can not do this")
+      false
+    end
+
+  end
+
 end

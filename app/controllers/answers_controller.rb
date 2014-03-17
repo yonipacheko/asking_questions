@@ -24,12 +24,11 @@ class AnswersController < ApplicationController
       flash[:notice] = 'Your vote was counted'
       redirect_to question_path( @question )
     else
-      #flash[:alert] = "You can't vote more than one time"
-      #flash.now[:error]
-        #redirect_to question_path ( @question )
-        #@answer
-        #@question
-      render 'questions/show'
+      #binding.pry
+      flash[:error] = vote.errors.full_messages.first  # we are bringing the message from the Model to the view!
+      #flash[:error] = "You can't vote more than one time"
+      #render 'questions/show'
+      redirect_to question_path(@question)
 
     end
     #if answer.votes.find_by(user: current_user)

@@ -28,14 +28,14 @@ class QuestionsController < ApplicationController
   end
 
   def show
-
+   # binding.pry
     @answer = Answer.new
     @question = Question.find(params[:id])
+    @vote = Vote.new
   end
 
   def edit
-    #binding.pry
-    @question = current_user.questions.where(id:params[:id]).first
+    @question = current_user.questions.where(params[:id]).first
   end
   def update
     @question = current_user.questions.where(params[:id]).first

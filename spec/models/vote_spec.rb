@@ -11,8 +11,10 @@ describe Vote do
     expect(v.user).to eq(user)
     expect(v.voteable_type).to eq('Answer')
 
-    vote2 = answer.votes.new(:user_id => user.id, :vote => false)
+    vote2 = answer.votes.new(:user_id => user.id, :vote => true)
     vote2.save
     expect(vote2.errors.full_messages).to eq(['Can not do this'])
+    #expect(vote2.only_one_vote).to eq(false)
+
   end
 end

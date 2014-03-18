@@ -35,10 +35,10 @@ class QuestionsController < ApplicationController
   end
 
   def edit
-    @question = current_user.questions.where(params[:id]).first
+    @question = current_user.questions.where(id: params[:id]).first
   end
   def update
-    @question = current_user.questions.where(params[:id]).first
+    @question = current_user.questions.where(id: params[:id]).first
     if @question.update_attributes(resolving_params)
       flash[:success] = "you question has been updated"
       redirect_to @question
